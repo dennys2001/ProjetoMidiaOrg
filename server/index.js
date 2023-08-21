@@ -12,10 +12,10 @@ app.use(express.json());
 //CRIAR FUNCIONÁRIO
 app.post("/create", async (req, res) => {
     try {
-        const { level, nome, leaderId, cargo } = req.body;
+        const { level, nome, leaderId, cargo, idEstrutura } = req.body;
         const newTodo = await pool.query(
-            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo) VALUES($1,$2,$3,$4) RETURNING *", 
-            [level, nome, leaderId, cargo]
+            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura) VALUES($1,$2,$3,$4,$5) RETURNING *", 
+            [level, nome, leaderId, cargo, idEstrutura]
         );
 
         res.json(newTodo.rows[0]);
