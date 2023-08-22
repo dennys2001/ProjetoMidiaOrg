@@ -24,25 +24,7 @@ const InputEmployee = () => {
         }
     };
 
-    const pesquisaEstrutura = async e => {
-        e.preventDefault();
-        try {
-            const body = { idEstrutura }
-            const response = await fetch(`http://localhost:5000/allemployees/estrutura/${idEstrutura}`, {
-                method:"POST",
-                headers: { "Content-Type": "application/json" },
-                body:JSON.stringify(body)
-           });
-
-            console.log(body);
-           // window.location = "/";
-        } catch (err) {
-            console.log(err.message);
-        }
-    };
-
-
-
+    
     return (
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
