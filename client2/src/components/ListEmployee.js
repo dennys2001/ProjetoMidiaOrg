@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect, useState} from "react";
+import EditEmployee from "./EditEmployee";
 
 const ListEmployee = () => {
     const [employees, setEmployee] = useState([]);
@@ -16,8 +17,6 @@ const ListEmployee = () => {
       console.error(err.message);
     }
   };
-
-
 
         const getEmployees = async () => {
             try {
@@ -50,13 +49,15 @@ const ListEmployee = () => {
                         </thead>
                         <tbody>
                         {employees.map(employee => (
-                            <tr>
+                            <tr key={employee.id}>
                                <td>{employee.nome}</td>
                                <td>{employee.level}</td>
                                <td>{employee.cargo}</td>
                                <td>{employee.lider_id}</td>
                                <td>{employee.id_sub_estrutura}</td>
-                               <td><button className="btn btn-danger" onClick={() => deleteEmployee(employees.id)}>Apagar</button><button className="btn btn-info m-1">Editar</button></td>
+                               <td><button className="btn btn-danger mr-1" onClick={() => deleteEmployee(employee.id)}>Apagar</button>
+                                   <EditEmployee employee={employee} />
+                                </td>
                             </tr>
                         ))
 

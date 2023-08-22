@@ -57,16 +57,16 @@ app.delete("/create/:id", async (req, res) => {
     }
 });
 
-//ATUALIZAR CARGO FUNCIONÁRIO
+//ATUALIZAR CARGO E LEVEL FUNCIONÁRIO
 
 app.put("/create/:id", async (req, res) => {
     try {
         
-        const { cargo } = req.body;
+        const { cargo, level } = req.body;
         const { id } = req.params;
         const updtTodos = await pool.query(
-            "UPDATE midia.ORGCHART SET cargo = ($1) where id = ($2)", 
-            [cargo, id]
+            "UPDATE midia.ORGCHART SET cargo = ($1), level = ($2) where id = ($3)", 
+            [cargo, level, id]
         );
                 //console.log(updtTodos);
         res.json("Cargo was Updated");
