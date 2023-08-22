@@ -27,35 +27,36 @@ const InputEmployee = () => {
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
         <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-            <h3>Level</h3>
+            
+            <h5>Level</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={level}
                 onChange={e => setLevel(e.target.value)}
             />
-            <h3>Nome</h3>
+            <h5>Nome</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={nome}
                 onChange={e => setName(e.target.value)}
             />
-            <h3>Lider</h3>
+            <h5>Lider</h5>
              <input 
                 type="text" 
                 className="form-control" 
                 value={leaderId}
                 onChange={e => setidLeader(e.target.value)}
             />
-            <h3>Cargo</h3>
+            <h5>Cargo</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={cargo}
                 onChange={e => setCargo(e.target.value)}
             />
-            <h3>Estrutura</h3>
+            <h5>Estrutura</h5>
             <input 
                 type="text" 
                 className="form-control" 
@@ -63,7 +64,7 @@ const InputEmployee = () => {
                 onChange={e => setEstrutura(e.target.value)}
             />
             <button className="btn btn-success">Add</button>
-        </form>
+            </form>
     </Fragment>
     );
 };
