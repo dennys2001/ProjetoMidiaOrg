@@ -39,6 +39,7 @@ const ListEmployee = () => {
                     <table className="table mt-5 text-center">
                         <thead>
                         <tr>
+                            <th>Id#</th>
                             <th>Nome</th>
                             <th>Level</th>
                             <th>Cargo</th>
@@ -50,6 +51,7 @@ const ListEmployee = () => {
                         <tbody>
                         {employees.map(employee => (
                             <tr key={employee.id}>
+                                <td>{employee.id}</td>
                                <td>{employee.nome}</td>
                                <td>{employee.level}</td>
                                <td>{employee.cargo}</td>
@@ -70,4 +72,3 @@ const ListEmployee = () => {
 
 export default ListEmployee;
 
-//achar porque que o ID fica undefined

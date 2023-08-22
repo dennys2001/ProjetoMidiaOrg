@@ -23,6 +23,26 @@ const InputEmployee = () => {
             console.log(err.message);
         }
     };
+
+    const pesquisaEstrutura = async e => {
+        e.preventDefault();
+        try {
+            const body = { idEstrutura }
+            const response = await fetch(`http://localhost:5000/allemployees/estrutura/${idEstrutura}`, {
+                method:"POST",
+                headers: { "Content-Type": "application/json" },
+                body:JSON.stringify(body)
+           });
+
+            console.log(body);
+           // window.location = "/";
+        } catch (err) {
+            console.log(err.message);
+        }
+    };
+
+
+
     return (
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
@@ -84,19 +104,8 @@ const InputEmployee = () => {
             </div> 
            
             </form>
+
             
-            <div class="col">
-            <label for="sel1">Estrutura:</label>    
-            <select class="form-control" id="Search">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
-           
-            <button class="btn btn-success" type="submit">Search</button>
-            
-            </div>
 
 
     </Fragment>
