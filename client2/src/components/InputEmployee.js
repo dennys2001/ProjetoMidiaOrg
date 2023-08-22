@@ -26,45 +26,79 @@ const InputEmployee = () => {
     return (
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
-        <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-            
-            <h5>Level</h5>
-            <input 
+        <form className="form-inline mt-5" onSubmit={onSubmitForm}>
+
+
+            <div class="container">            
+            <div className="row">
+            <div class="col">
+            <h5>Level:</h5>
+            <input md-3
                 type="text" 
                 className="form-control" 
                 value={level}
                 onChange={e => setLevel(e.target.value)}
             />
-            <h5>Nome</h5>
+            </div>
+            <div class="col">
+            <h5>Nome:</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={nome}
                 onChange={e => setName(e.target.value)}
             />
-            <h5>Lider</h5>
+            </div>
+            <div class="col">
+            <h5>Lider:</h5>
              <input 
                 type="text" 
                 className="form-control" 
                 value={leaderId}
                 onChange={e => setidLeader(e.target.value)}
             />
-            <h5>Cargo</h5>
+            </div>
+            <div class="col">
+            <h5>Cargo:</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={cargo}
                 onChange={e => setCargo(e.target.value)}
             />
-            <h5>Estrutura</h5>
+            </div>
+            <div class="col">
+            <h5>Estrutura:</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={idEstrutura}
                 onChange={e => setEstrutura(e.target.value)}
             />
-            <button className="btn btn-success">Add</button>
+             <button className="btn btn-success">Add</button>
+            </div>
+            <div class="col">
+            
+            </div>
+            </div>
+            </div> 
+           
             </form>
+            
+            <div class="col">
+            <label for="sel1">Estrutura:</label>    
+            <select class="form-control" id="Search">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+           
+            <button class="btn btn-success" type="submit">Search</button>
+            
+            </div>
+
+
     </Fragment>
     );
 };
