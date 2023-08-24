@@ -29,8 +29,6 @@ const InputEmployee = () => {
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
         <form className="form-inline mt-5" onSubmit={onSubmitForm}>
-
-
             <div class="container">            
             <div className="row">
             <div class="col">
@@ -77,20 +75,22 @@ const InputEmployee = () => {
                 value={idEstrutura}
                 onChange={e => setEstrutura(e.target.value)}
             />
-             <button className="btn btn-success">Add</button>
+             <button className="btn btn-success ml-3">Add</button>
             </div>
             <div class="col">
-            
+
             </div>
             </div>
-            </div> 
-           
+            </div>
+                <div class="container">            
+                <div className="row m-3"></div>
+                
+                
+                </div>
             </form>
-
             
+            </Fragment>
 
-
-    </Fragment>
     );
 };
 

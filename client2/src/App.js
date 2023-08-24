@@ -9,7 +9,6 @@ function App() {
   return <Fragment>
           <div className="container">
           <InputEmployee />
-          <SearchByTeam />
           <ListEmployee /> 
           </div>
         </Fragment>;
