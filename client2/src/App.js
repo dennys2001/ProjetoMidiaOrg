@@ -4,12 +4,13 @@ import './App.css';
 //components
 import InputEmployee from "./components/InputEmployee";
 import ListEmployee from "./components/ListEmployee";
+import FilterEmployee from "./components/FilterEmployee";
 
 function App() {
   return <Fragment>
           <div className="container">
           <InputEmployee />
-          <ListEmployee /> 
+          <ListEmployee />
           </div>
         </Fragment>;
 }

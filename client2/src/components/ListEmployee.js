@@ -1,5 +1,6 @@
 import React, {Fragment, useEffect, useState} from "react";
 import EditEmployee from "./EditEmployee";
+import FilterEmployee from "./FilterEmployee";
 
 const ListEmployee = () => {
     const [employees, setEmployee] = useState([]);
@@ -36,7 +37,7 @@ const ListEmployee = () => {
             console.log(employees);
             return(
                 <Fragment>
-              
+                     <FilterEmployee employee={employees} />   
                     <table className="table mt-5 text-center">
                         <thead>
                         <tr>
@@ -59,7 +60,7 @@ const ListEmployee = () => {
                                <td>{employee.lider_id}</td>
                                <td>{employee.id_sub_estrutura}</td>
                                <td><button className="btn btn-danger mr-1" onClick={() => deleteEmployee(employee.id)}>Apagar</button>
-                                   <EditEmployee employee={employee} />
+                               <EditEmployee employee={employee} />
                                 </td>
                             </tr>
                         ))
