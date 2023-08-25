@@ -24,14 +24,36 @@ return  <Fragment>
     <div class="container text-center p-3 my-3 border">
     <h6>Filter-Component</h6>
     <div class="btn-group">
-    <button type="button" class="btn btn-primary ml-4" data-toggle="modal" data-target={`#id_sub_estrutura${"A"}`}>Time A</button>
-    <button type="button" class="btn btn-primary ml-4">Time B</button>
-    <button type="button" class="btn btn-primary ml-4">Time C</button>
-    <button type="button" class="btn btn-primary ml-4">Time D</button>
-    <button type="button" class="btn btn-primary ml-4">Time E</button>
-    <button type="button" class="btn btn-primary ml-4">Time F</button>
-    <button type="button" class="btn btn-primary ml-4">Time G</button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Busca Time
+</button>
+
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">Estrutura do Time</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>
+    </div>
     </div>
 
 
