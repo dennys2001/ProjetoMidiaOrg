@@ -1,5 +1,6 @@
 import React, {Fragment, useEffect, useState} from "react";
 import EditEmployee from "./EditEmployee";
+import FilterEmployee from "./FilterEmployee";
 
 const ListEmployee = () => {
     const [employees, setEmployee] = useState([]);
@@ -36,9 +37,11 @@ const ListEmployee = () => {
             console.log(employees);
             return(
                 <Fragment>
+                     <FilterEmployee employee={employees} />   
                     <table className="table mt-5 text-center">
                         <thead>
                         <tr>
+                            <th>Id#</th>
                             <th>Nome</th>
                             <th>Level</th>
                             <th>Cargo</th>
@@ -50,13 +53,14 @@ const ListEmployee = () => {
                         <tbody>
                         {employees.map(employee => (
                             <tr key={employee.id}>
+                                <td>{employee.id}</td>
                                <td>{employee.nome}</td>
                                <td>{employee.level}</td>
                                <td>{employee.cargo}</td>
                                <td>{employee.lider_id}</td>
                                <td>{employee.id_sub_estrutura}</td>
                                <td><button className="btn btn-danger mr-1" onClick={() => deleteEmployee(employee.id)}>Apagar</button>
-                                   <EditEmployee employee={employee} />
+                               <EditEmployee employee={employee} />
                                 </td>
                             </tr>
                         ))
@@ -70,4 +74,3 @@ const ListEmployee = () => {
 
 export default ListEmployee;
 
-//achar porque que o ID fica undefined

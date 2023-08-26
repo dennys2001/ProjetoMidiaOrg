@@ -23,48 +23,74 @@ const InputEmployee = () => {
             console.log(err.message);
         }
     };
+
+    
     return (
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
-        <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-            <h3>Level</h3>
-            <input 
+        <form className="form-inline mt-5" onSubmit={onSubmitForm}>
+            <div class="container">            
+            <div className="row">
+            <div class="col">
+            <h5>Level:</h5>
+            <input md-3
                 type="text" 
                 className="form-control" 
                 value={level}
                 onChange={e => setLevel(e.target.value)}
             />
-            <h3>Nome</h3>
+            </div>
+            <div class="col">
+            <h5>Nome:</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={nome}
                 onChange={e => setName(e.target.value)}
             />
-            <h3>Lider</h3>
+            </div>
+            <div class="col">
+            <h5>Lider:</h5>
              <input 
                 type="text" 
                 className="form-control" 
                 value={leaderId}
                 onChange={e => setidLeader(e.target.value)}
             />
-            <h3>Cargo</h3>
+            </div>
+            <div class="col">
+            <h5>Cargo:</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={cargo}
                 onChange={e => setCargo(e.target.value)}
             />
-            <h3>Estrutura</h3>
+            </div>
+            <div class="col">
+            <h5>Estrutura:</h5>
             <input 
                 type="text" 
                 className="form-control" 
                 value={idEstrutura}
                 onChange={e => setEstrutura(e.target.value)}
             />
-            <button className="btn btn-success">Add</button>
-        </form>
-    </Fragment>
+             <button className="btn btn-success ml-3">Add</button>
+            </div>
+            <div class="col">
+
+            </div>
+            </div>
+            </div>
+                <div class="container">            
+                <div className="row m-3"></div>
+                
+                
+                </div>
+            </form>
+            
+            </Fragment>
+
     );
 };
 

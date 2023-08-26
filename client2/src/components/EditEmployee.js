@@ -35,7 +35,9 @@ const EditEmployee = ({ employee }) => {
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header" >
-        <h4 className="modal-title" >Editar Registro</h4>
+        <div className="text-center">
+        <h4 className="modal-title"><p class="text-center">Editar Registro</p></h4>
+        </div>
         <button 
             type="button"
             className="close" 
