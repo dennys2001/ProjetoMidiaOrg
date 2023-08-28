@@ -1,19 +1,26 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
+import EditEmployee from "./EditEmployee";
 
-const FilterEmployee = ({employee}) => {
-    const [id_sub_estrutura, employees, setEmployee] = useState([]);
 
-   const getEmployees = async (id_sub_estrutura) => {
-    try {
+const FilterEmployee = () => {
+    const [employees, setEmployee] = useState([]);
 
-        const response = await fetch(`http://localhost:5000/allemployees/estrutura/${id_sub_estrutura}`)
-        const jsonData = await response.json()
+        const getEmployees = async () => {
+            try {
 
-        setEmployee(jsonData);
-    } catch (err) {
-        console.error(err.message)        
-    }
-};
+                const response = await fetch("http://localhost:5000/allemployees")
+                const jsonData = await response.json()
+
+                setEmployee(jsonData);
+            } catch (err) {
+                console.error(err.message)        
+            }
+        };
+
+            useEffect(() => {
+                getEmployees();
+            }, []);
+            //console.log(employees);
 
 return  <Fragment>    
     <div class="container text-center p-3 my-3 border">
@@ -21,7 +28,7 @@ return  <Fragment>
     <div class="btn-group">
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-        onClick={(getEmployees[employees.id_sub_estrutura = `A`])}>
+        >
   Busca Time
 </button>
 
@@ -38,7 +45,41 @@ return  <Fragment>
 
 
       <div class="modal-body">
-        {employees.id_sub_estrutura}
+        
+      <table className="table mt-5 text-center">
+                        <thead>
+                        <tr>
+                            <th>Id#</th>
+                            <th>Nome</th>
+                            <th>Level</th>
+                            <th>Cargo</th>
+                            <th>Lider</th>
+                            <th>Estrutura</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {employees.map(employee => (
+                            <tr key={employee.id}>
+                                <td>{employee.id}</td>
+                               <td>{employee.nome}</td>
+                               <td>{employee.level}</td>
+                               <td>{employee.cargo}</td>
+                               <td>{employee.lider_id}</td>
+                               <td>{employee.id_sub_estrutura}</td>
+                               
+
+                            </tr>
+                        ))
+
+                        }
+                        </tbody>
+                    </table>
+
+
+
+
+
       </div>
 
 
