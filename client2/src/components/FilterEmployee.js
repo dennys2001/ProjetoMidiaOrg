@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from "react";
-import EditEmployee from "./EditEmployee";
+
 
 
 const FilterEmployee = () => {
@@ -8,7 +8,7 @@ const FilterEmployee = () => {
         const getEmployees = async () => {
             try {
 
-                const response = await fetch("http://localhost:5000/allemployees")
+                const response = await fetch("http://localhost:5000/allemployees/estrutura/1007")
                 const jsonData = await response.json()
 
                 setEmployee(jsonData);
@@ -21,7 +21,7 @@ const FilterEmployee = () => {
                 getEmployees();
             }, []);
             //console.log(employees);
-
+            
 return  <Fragment>    
     <div class="container text-center p-3 my-3 border">
     <h6>Filter-Component</h6>
