@@ -5,37 +5,23 @@ import React, {Fragment, useEffect, useState} from "react";
 const FilterEmployee = () => {
     const [employees, setEmployee] = useState([]);
     
-        const getEmployees = async () => {
-            try {
-
-                const response = await fetch("http://localhost:5000/callemployees/callemployees")
-                const jsonData = await response.json()
-
-                setEmployee(jsonData);
-            } catch (err) {
-                console.error(err.message)        
-            }
-        };
-
-            useEffect(() => {
-                getEmployees();
-            }, []);
-           // console.log(employees);
+        
     
     const [estrutura, setEstrutura] = useState([]);
              const getEstrutura = async () => {
                 try {
-                  
-                  const response = await fetch("http://localhost:5000/callemployees/callemployees")
+
+                  const response = await fetch(`http://localhost:5000/allemployees/${estrutura.id_sub_estrutura}`)
                   const jsonData = await response.json()
 
                 setEmployee(jsonData);
+                console.log(estrutura.id_sub_estrutura);
                 } catch (err) {
                     console.error(err.message)
                 }
-
-             }
-
+              
+             };
+    
 
 
 
@@ -49,7 +35,8 @@ return  <Fragment>
 
     <form>
         <select name="estruturas" class="custom-select"
-        onChange={setEstrutura}>
+                   value={`id${estrutura.id_sub_estrutura}`}
+                   onChange={() => [setEstrutura(estrutura.id_sub_estrutura)]}>
         <option defaulfValue>Selecionar Estrutura</option>
         {employees.map(employee => (
           <option key={employee.id_sub_estrutura} value = {employee.id_sub_estrutura}> {employee.id_sub_estrutura}</option>
@@ -61,7 +48,7 @@ return  <Fragment>
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-        onClick={getEmployees}
+        onClick = {getEstrutura} 
         >
   Busca Time
 </button>
