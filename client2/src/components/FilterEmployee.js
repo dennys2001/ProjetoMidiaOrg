@@ -15,7 +15,7 @@ const FilterEmployee = () => {
     } catch (err) {
         console.error(err.message)        
     }
-    console.log(employees);
+   // console.log(employees);
 };
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const FilterEmployee = () => {
                 } catch (err) {
                     console.error(err.message)
                 }
-                console.log(estrutura, id_estrutura);
+               // console.log(estrutura, id_estrutura);
              };
     
 
@@ -54,9 +54,9 @@ return  <Fragment>
 
     <form>
         <select name="estruturas" class="custom-select"
-                   value={`id${id_estrutura}`}
+                   //value={`id${id_estrutura}`}
                    onChange={e => setIdEstrutura(e.target.value) }>
-        <option defaultValue>Selecionar</option>
+        <option defaultValue>Selecione o Time</option>
         {employees.map(employee => (
           <option key={employee.id_sub_estrutura} value = {employee.id_sub_estrutura}> {employee.id_sub_estrutura}</option>
                         ))
@@ -114,10 +114,6 @@ return  <Fragment>
                         </tbody>
                     </table>
 
-
-
-
-
       </div>
 
 
@@ -130,15 +126,7 @@ return  <Fragment>
 </div>
     </div>
     </div>
-
-
-   
-
-
-
     </Fragment>
-
 };
-
 
 export default FilterEmployee;
