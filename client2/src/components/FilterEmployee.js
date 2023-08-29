@@ -4,11 +4,11 @@ import React, {Fragment, useEffect, useState} from "react";
 
 const FilterEmployee = () => {
     const [employees, setEmployee] = useState([]);
-
+    
         const getEmployees = async () => {
             try {
 
-                const response = await fetch("http://localhost:5000/allemployees/estrutura/1007")
+                const response = await fetch("http://localhost:5000/callemployees/callemployees")
                 const jsonData = await response.json()
 
                 setEmployee(jsonData);
@@ -20,14 +20,48 @@ const FilterEmployee = () => {
             useEffect(() => {
                 getEmployees();
             }, []);
-            //console.log(employees);
-            
+           // console.log(employees);
+    
+    const [estrutura, setEstrutura] = useState([]);
+             const getEstrutura = async () => {
+                try {
+                  
+                  const response = await fetch("http://localhost:5000/callemployees/callemployees")
+                  const jsonData = await response.json()
+
+                setEmployee(jsonData);
+                } catch (err) {
+                    console.error(err.message)
+                }
+
+             }
+
+
+
+
+
 return  <Fragment>    
     <div class="container text-center p-3 my-3 border">
-    <h6>Filter-Component</h6>
+    <h6>Pesquisar</h6>
     <div class="btn-group">
 
+
+
+    <form>
+        <select name="estruturas" class="custom-select"
+        onChange={setEstrutura}>
+        <option defaulfValue>Selecionar Estrutura</option>
+        {employees.map(employee => (
+          <option key={employee.id_sub_estrutura} value = {employee.id_sub_estrutura}> {employee.id_sub_estrutura}</option>
+                        ))
+                        }
+                         
+        </select>
+      </form>  
+
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+        onClick={getEmployees}
         >
   Busca Time
 </button>
@@ -36,8 +70,6 @@ return  <Fragment>
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-
-
       <div class="modal-header">
         <h4 class="modal-title">Estrutura do Time</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>

@@ -91,23 +91,21 @@ app.get("/allemployees/:id", async (req, res) => {
     }
 });
 
+
 // BUSCAR TODOS DE UMA ESTRUTURA
 
-app.get("/allemployees/estrutura/:estruturaid", async (req, res) => {
+app.get("/callemployees/callemployees", async (req, res) => {
     try {
-        const { estruturaid } = req.params;
         const allEstrutura = await pool.query(
-            "SELECT * FROM midia.ORGCHART where id_sub_estrutura = ($1) order by level", 
-            [estruturaid]
+            "SELECT DISTINCT(id_sub_estrutura) FROM midia.ORGCHART order by id_sub_estrutura", 
         );
 
         res.json(allEstrutura.rows);
     } catch (err) {
         console.error(err.message);
     }
+    console.log("chamou");
 });
-
-
 
 
 app.listen(5000, () => {
