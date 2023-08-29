@@ -94,7 +94,7 @@ app.get("/allemployees/:id", async (req, res) => {
 
 // BUSCAR ID DE TODAS AS ESTRUTURA
 
-app.get("/callemployees/callemployees", async (req, res) => {
+app.get("/callemployees/callestruturas", async (req, res) => {
     try {
         const allEstrutura = await pool.query(
             "SELECT DISTINCT(id_sub_estrutura) FROM midia.ORGCHART order by id_sub_estrutura", 

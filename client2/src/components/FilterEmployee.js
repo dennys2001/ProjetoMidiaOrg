@@ -3,23 +3,40 @@ import React, {Fragment, useEffect, useState} from "react";
 
 
 const FilterEmployee = () => {
-    const [employees, setEmployee] = useState([]);
-    
+  const [employees, setEmployee] = useState([]);
+  const getEmployees = async () => {
+
+    try {
+
+        const response = await fetch("http://localhost:5000/callemployees/callestruturas")
+        const jsonData = await response.json()
+
+        setEmployee(jsonData);
+    } catch (err) {
+        console.error(err.message)        
+    }
+    console.log(employees);
+};
+
+    useEffect(() => {
+        getEmployees();
+    }, []);
+
         
     
     const [estrutura, setEstrutura] = useState([]);
-             const getEstrutura = async () => {
+             const getEstrutura = async e => {
                 try {
 
                   const response = await fetch(`http://localhost:5000/allemployees/${estrutura.id_sub_estrutura}`)
                   const jsonData = await response.json()
 
-                setEmployee(jsonData);
-                console.log(estrutura.id_sub_estrutura);
+                setEstrutura(jsonData);
+               
                 } catch (err) {
                     console.error(err.message)
                 }
-              
+                console.log("Estrutura =", estrutura);
              };
     
 
@@ -36,8 +53,8 @@ return  <Fragment>
     <form>
         <select name="estruturas" class="custom-select"
                    value={`id${estrutura.id_sub_estrutura}`}
-                   onChange={() => [setEstrutura(estrutura.id_sub_estrutura)]}>
-        <option defaulfValue>Selecionar Estrutura</option>
+                   onChange={e => setEstrutura(e.target.value)}>
+        <option>Selecionar Estrutura</option>
         {employees.map(employee => (
           <option key={employee.id_sub_estrutura} value = {employee.id_sub_estrutura}> {employee.id_sub_estrutura}</option>
                         ))

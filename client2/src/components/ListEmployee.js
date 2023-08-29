@@ -37,7 +37,7 @@ const ListEmployee = () => {
             //console.log(employees);
             return(
                 <Fragment>
-                     <FilterEmployee employee={employees} />   
+                     <FilterEmployee employees={employees} />   
                     <table className="table mt-5 text-center">
                         <thead>
                         <tr>
