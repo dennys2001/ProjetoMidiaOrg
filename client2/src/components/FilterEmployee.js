@@ -25,10 +25,12 @@ const FilterEmployee = () => {
         
     
     const [estrutura, setEstrutura] = useState([]);
+    const [id_estrutura, setIdEstrutura] = useState([]);
              const getEstrutura = async e => {
+ 
                 try {
 
-                  const response = await fetch(`http://localhost:5000/allemployees/${estrutura.id_sub_estrutura}`)
+                  const response = await fetch(`http://localhost:5000/allemployees/${id_estrutura}`)
                   const jsonData = await response.json()
 
                 setEstrutura(jsonData);
@@ -36,7 +38,7 @@ const FilterEmployee = () => {
                 } catch (err) {
                     console.error(err.message)
                 }
-                console.log("Estrutura =", estrutura);
+                console.log(estrutura, id_estrutura);
              };
     
 
@@ -52,9 +54,9 @@ return  <Fragment>
 
     <form>
         <select name="estruturas" class="custom-select"
-                   value={`id${estrutura.id_sub_estrutura}`}
-                   onChange={e => setEstrutura(e.target.value)}>
-        <option>Selecionar Estrutura</option>
+                   value={`id${id_estrutura}`}
+                   onChange={e => setIdEstrutura(e.target.value) }>
+        <option defaultValue>Selecionar</option>
         {employees.map(employee => (
           <option key={employee.id_sub_estrutura} value = {employee.id_sub_estrutura}> {employee.id_sub_estrutura}</option>
                         ))
@@ -95,14 +97,14 @@ return  <Fragment>
                         </tr>
                         </thead>
                         <tbody>
-                        {employees.map(employee => (
-                            <tr key={employee.id}>
-                                <td>{employee.id}</td>
-                               <td>{employee.nome}</td>
-                               <td>{employee.level}</td>
-                               <td>{employee.cargo}</td>
-                               <td>{employee.lider_id}</td>
-                               <td>{employee.id_sub_estrutura}</td>
+                        {estrutura.map(estrutura => (
+                            <tr key={estrutura.id}>
+                                <td>{estrutura.id}</td>
+                               <td>{estrutura.nome}</td>
+                               <td>{estrutura.level}</td>
+                               <td>{estrutura.cargo}</td>
+                               <td>{estrutura.lider_id}</td>
+                               <td>{estrutura.id_sub_estrutura}</td>
                                
 
                             </tr>
