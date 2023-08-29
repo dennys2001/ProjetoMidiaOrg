@@ -81,7 +81,7 @@ app.get("/allemployees/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const allEstrutura = await pool.query(
-            "SELECT * FROM midia.ORGCHART where id = ($1) or lider_id = ($1) or id_sub_estrutura = 1007 order by level", 
+            "SELECT * FROM midia.ORGCHART where id_sub_estrutura = ($1) order by level", 
             [id]
         );
 
@@ -92,7 +92,7 @@ app.get("/allemployees/:id", async (req, res) => {
 });
 
 
-// BUSCAR TODOS DE UMA ESTRUTURA
+// BUSCAR ID DE TODAS AS ESTRUTURA
 
 app.get("/callemployees/callemployees", async (req, res) => {
     try {
