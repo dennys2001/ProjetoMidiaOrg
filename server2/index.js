@@ -92,7 +92,7 @@ app.get("/allemployees/:id", async (req, res) => {
 });
 
 
-// BUSCAR ID DE TODAS AS ESTRUTURA
+// BUSCAR ID DE TODAS AS ESTRUTURAS
 
 app.get("/callemployees/callestruturas", async (req, res) => {
     try {
@@ -106,6 +106,24 @@ app.get("/callemployees/callestruturas", async (req, res) => {
     }
     console.log("chamou");
 });
+
+
+//BUSCA DIRETORES
+
+app.get("/allemployees/diretores/todos", async (req, res) => {
+    try {
+        const allDirectors= await pool.query(
+            "SELECT * FROM midia.ORGCHART where level in (1, 2) order by level", 
+        );
+    
+        res.json(allDirectors.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  
+});
+
+
 
 
 app.listen(5000, () => {

@@ -5,7 +5,7 @@ const OrgComplete = () => {
         const getTime = async () => {
             try {
 
-                const response = await fetch("http://localhost:5000/allemployees")
+                const response = await fetch("http://localhost:5000/allemployees/diretores/todos")
                 const jsonData = await response.json()
                 
                 setTime(jsonData);
@@ -26,8 +26,22 @@ const OrgComplete = () => {
 
         return (
         <Fragment>
-                    <h1 className="text-center mt-5">Teste</h1>
-                    <body>
+                    <h1 className="text-center mt-5">Esse é o Rolê</h1>
+                    <div class="container mt-3">
+                    <h2>Diretores Midia Dentsu Brasil</h2>
+                    <p>------------------------------------------------------------------</p> 
+                    <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>NOME</th>
+                            <th>LEVEL</th>
+                            <th>CARGO</th>
+                            <th>LIDER</th>
+                            <th>ESTRUTURA</th>
+                            </tr>
+                    </thead>    
+                    <tbody>
                         {time.map(time => (
                             <tr key={time.id}>
                                 <td>{time.id}</td>
@@ -42,7 +56,9 @@ const OrgComplete = () => {
                         ))
 
                         }
-                        </body>
+                        </tbody>
+                    </table>
+                    </div>
         </Fragment>
         );
     }
