@@ -1,9 +1,11 @@
 import React, { Fragment, useState }  from "react";
+import ViewStructure from "./ViewStructure";
+
 
 
 
 const OrgComplete = () => {
-    const [time, setTime] = useState([]);
+    const [times, setTime] = useState([]);
         const getTime = async () => {
             try {
 
@@ -19,10 +21,17 @@ const OrgComplete = () => {
             
         };
        
-        useState((time) => {
+        
+        useState((times) => {
             getTime();
         }, []);
-        console.log({time})
+
+      /*  const callTime = id => {
+            console.log(id)
+            return (
+            <ViewStructure />
+            );
+        };*/
 
 
 
@@ -43,25 +52,30 @@ const OrgComplete = () => {
                             <th>CARGO</th>
                             <th>LIDER</th>
                             <th>ESTRUTURA</th>
+                            <th>BUSCAR</th>
                             </tr>
                     </thead>    
                     <tbody>
-                        {time.map(time => (
-                            <tr key={time.id}>
+                        {times.map(time => (
+                            <tr key={time.id} > 
                                 <td>{time.id}</td>
                                 <td>{time.nome}</td>
                                 <td>{time.level}</td>
                                 <td>{time.cargo}</td>
                                 <td>{time.lider_id}</td>
                                 <td>{time.id_sub_estrutura}</td>
+                                <td><ViewStructure time={time}/></td>
                             </tr>
                         ))
 
                         }
                     </tbody>
                 </table>
+    
         </div>
         </Fragment>
         );
     }
 export default OrgComplete;
+
+//
