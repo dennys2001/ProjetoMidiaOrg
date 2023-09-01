@@ -31,20 +31,7 @@ const OrgComplete = () => {
         <Fragment>
         <h1 className="text-center mt-5">Esse é o Rolê</h1>
         <div className="container mt-3">
-        <div className="card"  style={{width:"250px", height:"200px"}}>
-
-                    <div className="card-img-top" 
-                         src="img_gerente.png" 
-                         alt="Card image" key={time.id}/>
-                        <div className="card-body">
-                            <h4 className="card-title">{time.nome}</h4>
-                            <p className="card-text">{time.cargo}</p>
-                            <button className="btn btn-primary">{time.id_sub_estrutura}</button>
-                        </div>
-
-                    </div>
-        
-                    <h2>Diretores Midia Dentsu Brasil</h2>
+                           <h2>Diretores Midia Dentsu Brasil</h2>
                     <p>------------------------------------------------------------------</p> 
 
                 <table className="table table-hover">
