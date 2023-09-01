@@ -64,7 +64,7 @@ const OrgComplete = () => {
                                 <td>{time.cargo}</td>
                                 <td>{time.lider_id}</td>
                                 <td>{time.id_sub_estrutura}</td>
-                                <td><ViewStructure time={time}/></td>
+                                <td><ViewStructure time={time} /></td>
                             </tr>
                         ))
 

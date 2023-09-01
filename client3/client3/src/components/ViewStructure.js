@@ -1,22 +1,40 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 
 const ViewStructure = ({ time }) => {
-    
-    console.log(time);
+    const [id] = useState(time.id);
+   console.log(time);
+
+    //------------------------------------------------------------------------------------------
+
+    const getFilhos = async id => {
+        console.log("clicou nos filhos de", id);
+        try {
+
+            const response = await fetch("http://localhost:5000/allemployees/:id")
+            const jsonData = await response.json()
+        
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+    //-------------------------------------------------------------------------------------------
+
     return (
         <Fragment>
 
    
 <div className="container mt-3">
   
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#id${time.id}`}
+onClick={() => getFilhos(time.id)}>
     Open modal
   </button>
 </div>
 
 
-<div class="modal fade" id="myModal">
+<div class="modal fade" id={`id${time.id}`}>
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
 
@@ -28,7 +46,7 @@ const ViewStructure = ({ time }) => {
 
 
       <div class="modal-body">
-        Modal body..
+      <input type='text' className="form-control" value={id}/>
       </div>
 
  
