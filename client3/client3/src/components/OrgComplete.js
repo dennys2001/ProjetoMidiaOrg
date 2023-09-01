@@ -1,4 +1,6 @@
-import React, { Fragment, useState, useEffect }  from "react";
+import React, { Fragment, useState }  from "react";
+
+
 
 const OrgComplete = () => {
     const [time, setTime] = useState([]);
@@ -26,11 +28,21 @@ const OrgComplete = () => {
 
         return (
         <Fragment>
-                    <h1 className="text-center mt-5">Esse é o Rolê</h1>
-                    <div class="container mt-3">
+        <h1 className="text-center mt-5">Esse é o Rolê</h1>
+        <div className="container mt-3">
+        <div className="card"  style={{width:"250px", height:"200px"}} >
+                    <div className="card-img-top" src="D:\Dev Environment\OrganogramaMidia\ProjetoMidiaOrg\ProjetoMidiaOrg\client3\client3\public\img_gerente.png" alt="Card image"/>
+                    <div className="card-body">
+                        <h4 className="card-title">John Doe</h4>
+                        <p className="card-text">Some example text.</p>
+                        <button className="btn btn-primary">See Profile</button>
+                    </div>
+                    </div>
+        
                     <h2>Diretores Midia Dentsu Brasil</h2>
                     <p>------------------------------------------------------------------</p> 
-                    <table class="table table-hover">
+
+                                        <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>#ID</th>
@@ -58,7 +70,7 @@ const OrgComplete = () => {
                         }
                         </tbody>
                     </table>
-                    </div>
+        </div>
         </Fragment>
         );
     }
