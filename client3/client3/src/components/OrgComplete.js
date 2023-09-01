@@ -18,31 +18,36 @@ const OrgComplete = () => {
             }
             
         };
-        console.log(time);
-        useState(() => {
+       
+        useState((time) => {
             getTime();
         }, []);
-
+        console.log({time})
 
 
 
         return (
+
         <Fragment>
         <h1 className="text-center mt-5">Esse é o Rolê</h1>
         <div className="container mt-3">
-        <div className="card"  style={{width:"250px", height:"200px"}} >
-                    <div className="card-img-top" src="D:\Dev Environment\OrganogramaMidia\ProjetoMidiaOrg\ProjetoMidiaOrg\client3\client3\public\img_gerente.png" alt="Card image"/>
-                    <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text">Some example text.</p>
-                        <button className="btn btn-primary">See Profile</button>
-                    </div>
+        <div className="card"  style={{width:"250px", height:"200px"}}>
+
+                    <div className="card-img-top" 
+                         src="img_gerente.png" 
+                         alt="Card image" key={time.id}/>
+                        <div className="card-body">
+                            <h4 className="card-title">{time.nome}</h4>
+                            <p className="card-text">{time.cargo}</p>
+                            <button className="btn btn-primary">{time.id_sub_estrutura}</button>
+                        </div>
+
                     </div>
         
                     <h2>Diretores Midia Dentsu Brasil</h2>
                     <p>------------------------------------------------------------------</p> 
 
-                                        <table className="table table-hover">
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>#ID</th>
@@ -57,19 +62,17 @@ const OrgComplete = () => {
                         {time.map(time => (
                             <tr key={time.id}>
                                 <td>{time.id}</td>
-                               <td>{time.nome}</td>
-                               <td>{time.level}</td>
-                               <td>{time.cargo}</td>
-                               <td>{time.lider_id}</td>
-                               <td>{time.id_sub_estrutura}</td>
-                               
-                       
+                                <td>{time.nome}</td>
+                                <td>{time.level}</td>
+                                <td>{time.cargo}</td>
+                                <td>{time.lider_id}</td>
+                                <td>{time.id_sub_estrutura}</td>
                             </tr>
                         ))
 
                         }
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
         </div>
         </Fragment>
         );
