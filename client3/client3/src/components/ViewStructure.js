@@ -11,7 +11,7 @@ const ViewStructure = ({ time }) => {
         console.log("clicou nos filhos de", id);
         try {
 
-            const response = await fetch("http://localhost:5000/allemployees/:id")
+            const response = await fetch(`http://localhost:5000/allemployees/${id}`)
             const jsonData = await response.json()
         
         } catch (err) {
