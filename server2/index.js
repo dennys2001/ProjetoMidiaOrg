@@ -75,7 +75,7 @@ app.put("/create/:id", async (req, res) => {
     }
 });
 
-//BUSCAR LIDER E ESTRUTURA
+//BUSCAR ESTRUTURA completa
 
 app.get("/allemployees/:id", async (req, res) => {
     try {
