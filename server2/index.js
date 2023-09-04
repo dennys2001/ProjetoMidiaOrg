@@ -141,6 +141,26 @@ app.get("/allemployees/subestrutura/:id", async (req, res) => {
 });
 
 
+//BUSCA OS NOMES DE TODOS
+
+app.get("/allemployees/nomes/todos", async (req, res) => {
+    try {
+        const allDirectors= await pool.query(
+            "SELECT id, nome FROM midia.ORGCHART order by level", 
+        );
+    
+        res.json(allDirectors.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  
+});
+
+
+
+
+
+
 
 
 app.listen(5000, () => {

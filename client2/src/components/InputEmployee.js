@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import ListEmployee from "./ListEmployee";
 
 const InputEmployee = () => {
@@ -10,7 +10,7 @@ const InputEmployee = () => {
 /* INSERINDO O CAMPO DE MARCAS - 04/09 12:55*/
     const [marcas, setMarcas] = useState("");
 
-    const [lider, setListLider] = useState("");
+    const [lideres, setListLider] = useState("");
 
 
     const onSubmitForm = async e => {
@@ -32,18 +32,21 @@ const InputEmployee = () => {
 
     const getListLider = async () => {
           try {
-            const response = await fetch("http://localhost:5000/allemployees")
+            const response = await fetch("http://localhost:5000/allemployees/nomes/todos")
             const jsonData = await response.json()
 
             setListLider(jsonData);
-
+            
           } catch (err) {
             console.error(err.message)
             
           }      
-          console.log(lider);
-    }
-    
+          
+    };
+
+    useEffect(() => {
+        getListLider();
+    }, []);
     
 
 
@@ -57,12 +60,18 @@ const InputEmployee = () => {
             <div className="row">
             <div className="col">
             <h5>Level:</h5>
-            <input 
+            <select 
                 type="text" 
                 className="form-control" 
                 value={level}
                 onChange={e => setLevel(e.target.value)}
-            />
+            >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
             </div>
             <div className="col">
             <h5>Nome:</h5>
@@ -82,6 +91,10 @@ const InputEmployee = () => {
                 onChange={e => setidLeader(e.target.value)}
             >
                     <option defaultValue>Selecione o Líder</option>
+                        { lideres && lideres.map(lider => ( <option key={lider.id} value = {lider.id}>{lider.nome}</option>
+
+                        ) )}
+                   
             </select>
             </div>
             <div className="col">
