@@ -36,7 +36,7 @@ const EditEmployee = ({ employee }) => {
     <div className="modal-content">
       <div className="modal-header" >
         <div className="text-center">
-        <h4 className="modal-title"><p class="text-center">Editar Registro</p></h4>
+        <h4 className="modal-title"><p className="text-center">Editar Registro</p></h4>
         </div>
         <button 
             type="button"

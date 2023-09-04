@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from "react";
+import ListEmployee from "./ListEmployee";
 
 const InputEmployee = () => {
     const [level, setLevel] = useState("");
@@ -6,11 +7,16 @@ const InputEmployee = () => {
     const [leaderId, setidLeader] = useState("");
     const [cargo, setCargo] = useState("");
     const [idEstrutura, setEstrutura] = useState("");
+/* INSERINDO O CAMPO DE MARCAS - 04/09 12:55*/
+    const [marcas, setMarcas] = useState("");
+
+
+
 
     const onSubmitForm = async e => {
         e.preventDefault();
         try {
-            const body = { level, nome, leaderId, cargo, idEstrutura }
+            const body = { level, nome, leaderId, cargo, idEstrutura, marcas }
             const response = await fetch("http://localhost:5000/create", {
                 method:"POST",
                 headers: { "Content-Type": "application/json" },
@@ -29,18 +35,18 @@ const InputEmployee = () => {
     <Fragment>
         <h1 className="text-center mt-5">Org Chart Admin</h1>
         <form className="form-inline mt-5" onSubmit={onSubmitForm}>
-            <div class="container">            
+            <div className="container">            
             <div className="row">
-            <div class="col">
+            <div className="col">
             <h5>Level:</h5>
-            <input md-3
+            <input 
                 type="text" 
                 className="form-control" 
                 value={level}
                 onChange={e => setLevel(e.target.value)}
             />
             </div>
-            <div class="col">
+            <div className="col">
             <h5>Nome:</h5>
             <input 
                 type="text" 
@@ -49,16 +55,18 @@ const InputEmployee = () => {
                 onChange={e => setName(e.target.value)}
             />
             </div>
-            <div class="col">
+            <div className="col">
             <h5>Lider:</h5>
-             <input 
+             <select 
                 type="text" 
                 className="form-control" 
                 value={leaderId}
                 onChange={e => setidLeader(e.target.value)}
-            />
+            >  
+                    <option defaultValue>Selecione o Líder</option>
+            </select>
             </div>
-            <div class="col">
+            <div className="col">
             <h5>Cargo:</h5>
             <input 
                 type="text" 
@@ -67,7 +75,7 @@ const InputEmployee = () => {
                 onChange={e => setCargo(e.target.value)}
             />
             </div>
-            <div class="col">
+            <div className="col">
             <h5>Estrutura:</h5>
             <input 
                 type="text" 
@@ -75,14 +83,25 @@ const InputEmployee = () => {
                 value={idEstrutura}
                 onChange={e => setEstrutura(e.target.value)}
             />
-             <button className="btn btn-success ml-3">Add</button>
             </div>
-            <div class="col">
+            <div className="col">
+            <h5>Marcas:</h5>
+            <input 
+                type="text" 
+                className="form-control" 
+                value={marcas}
+                onChange={e => setMarcas(e.target.value)}
+            />
+            <button className="btn btn-success ml-3">Add</button>
+            </div>
+            
+            
+            <div className="col">
 
             </div>
             </div>
             </div>
-                <div class="container">            
+                <div className="container">            
                 <div className="row m-3"></div>
                 
                 

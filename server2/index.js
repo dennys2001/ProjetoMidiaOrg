@@ -12,10 +12,10 @@ app.use(express.json());
 //CRIAR FUNCIONÁRIO
 app.post("/create", async (req, res) => {
     try {
-        const { level, nome, leaderId, cargo, idEstrutura } = req.body;
+        const { level, nome, leaderId, cargo, idEstrutura, marcas } = req.body;
         const newTodo = await pool.query(
-            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura) VALUES($1,$2,$3,$4,$5) RETURNING *", 
-            [level, nome, leaderId, cargo, idEstrutura]
+            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura, marcas) VALUES($1,$2,$3,$4,$5,$6) RETURNING *", 
+            [level, nome, leaderId, cargo, idEstrutura, marcas]
         );
 
         res.json(newTodo.rows[0]);
@@ -121,6 +121,23 @@ app.get("/allemployees/diretores/todos", async (req, res) => {
         console.error(err.message);
     }
   
+});
+
+
+
+
+app.get("/allemployees/subestrutura/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const allEstrutura = await pool.query(
+            "select * from midia.ORGCHART where lider_id in (SELECT id FROM midia.ORGCHART where lider_id = ($1) or id = ($1)) or ID in (SELECT id FROM midia.ORGCHART where lider_id = ($1) or id = ($1)) order by level", 
+            [id]
+        );
+
+        res.json(allEstrutura.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
 });
 
 

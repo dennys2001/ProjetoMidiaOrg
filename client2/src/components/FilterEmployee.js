@@ -46,16 +46,15 @@ const FilterEmployee = () => {
 
 
 return  <Fragment>    
-    <div class="container text-center p-3 my-3 border">
+    <div className="container text-center p-3 my-3 border">
     <h6>Pesquisar</h6>
-    <div class="btn-group">
+    <div className="btn-group">
 
 
 
     <form>
-        <select name="estruturas" class="custom-select"
-                   //value={`id${id_estrutura}`}
-                   onChange={e => setIdEstrutura(e.target.value) }>
+        <select name="estruturas" className="custom-select"
+                onChange={e => setIdEstrutura(e.target.value) }>
         <option defaultValue>Selecione o Time</option>
         {employees.map(employee => (
           <option key={employee.id_sub_estrutura} value = {employee.id_sub_estrutura}> {employee.id_sub_estrutura}</option>
@@ -66,23 +65,23 @@ return  <Fragment>
       </form>  
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal"
         onClick = {getEstrutura} 
         >
   Busca Time
 </button>
 
 
-<div class="modal" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Estrutura do Time</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+<div className="modal" id="myModal">
+  <div className="modal-dialog modal-lg">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h4 className="modal-title">Estrutura do Time</h4>
+        <button type="button" className="close" data-dismiss="modal">&times;</button>
       </div>
 
 
-      <div class="modal-body">
+      <div className="modal-body">
         
       <table className="table mt-5 text-center">
                         <thead>
@@ -117,8 +116,8 @@ return  <Fragment>
       </div>
 
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
 
     </div>

@@ -38,10 +38,10 @@ const OrgComplete = () => {
         return (
 
         <Fragment>
-        <h1 className="text-center mt-5">Esse é o Rolê</h1>
+        <h1 className="text-center mt-5">Lista da estrutura</h1>
         <div className="container mt-3">
-                           <h2>Diretores Midia Dentsu Brasil</h2>
-                    <p>------------------------------------------------------------------</p> 
+                           <h2></h2>
+                    <p className="text-center mt-0">------------------------------------------------------------------</p> 
 
                 <table className="table table-hover">
                     <thead>
@@ -52,7 +52,7 @@ const OrgComplete = () => {
                             <th>CARGO</th>
                             <th>LIDER</th>
                             <th>ESTRUTURA</th>
-                            <th>BUSCAR</th>
+                            <th className="text-center">BUSCAR</th>
                             </tr>
                     </thead>    
                     <tbody>
@@ -64,7 +64,7 @@ const OrgComplete = () => {
                                 <td>{time.cargo}</td>
                                 <td>{time.lider_id}</td>
                                 <td>{time.id_sub_estrutura}</td>
-                                <td><ViewStructure time={time} /></td>
+                                <td className="text-center"><ViewStructure time={time} /></td>
                             </tr>
                         ))
 
