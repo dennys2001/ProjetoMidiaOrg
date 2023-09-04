@@ -73,7 +73,7 @@ onClick={() => getFilhos(time.id)}>
                                 <td>{filho.cargo}</td>
                                 <td>{filho.lider_id}</td>
                                 <td>{filho.id_sub_estrutura}</td>
-                                <td>{filho.marcas}</td>
+                                <td><span class="badge bg-secondary inline-block">{filho.marcas}</span></td>
                             </tr>
                         ))
 
