@@ -34,7 +34,7 @@ const ListEmployee = () => {
             useEffect(() => {
                 getEmployees();
             }, []);
-            //console.log(employees);
+           // console.log(employees);
             return(
                 <Fragment>
                      <FilterEmployee employees={employees} />   

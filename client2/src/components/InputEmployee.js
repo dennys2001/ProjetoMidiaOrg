@@ -10,7 +10,7 @@ const InputEmployee = () => {
 /* INSERINDO O CAMPO DE MARCAS - 04/09 12:55*/
     const [marcas, setMarcas] = useState("");
 
-
+    const [lider, setListLider] = useState("");
 
 
     const onSubmitForm = async e => {
@@ -29,6 +29,24 @@ const InputEmployee = () => {
             console.log(err.message);
         }
     };
+
+    const getListLider = async () => {
+          try {
+            const response = await fetch("http://localhost:5000/allemployees")
+            const jsonData = await response.json()
+
+            setListLider(jsonData);
+
+          } catch (err) {
+            console.error(err.message)
+            
+          }      
+          console.log(lider);
+    }
+    
+    
+
+
 
     
     return (
@@ -62,7 +80,7 @@ const InputEmployee = () => {
                 className="form-control" 
                 value={leaderId}
                 onChange={e => setidLeader(e.target.value)}
-            >  
+            >
                     <option defaultValue>Selecione o Líder</option>
             </select>
             </div>
