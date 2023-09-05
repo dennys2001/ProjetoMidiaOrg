@@ -4,7 +4,9 @@ import ViewStructure from "./ViewStructure";
 
 
 
+
 const OrgComplete = () => {
+   
     const [times, setTime] = useState([]);
         const getTime = async () => {
             try {
@@ -45,7 +47,7 @@ const OrgComplete = () => {
 
                 <table className="table table-hover">
                     <thead>
-                        <tr>
+                        <tr className="text-center">
                             <th>#ID</th>
                             <th>NOME</th>
                             <th>LEVEL</th>
@@ -57,14 +59,14 @@ const OrgComplete = () => {
                     </thead>    
                     <tbody>
                         {times.map(time => (
-                            <tr key={time.id} > 
-                                <td>{time.id}</td>
+                            <tr className="text-center align-middle" key={time.id} > 
+                                <td >{time.id}</td>
                                 <td>{time.nome}</td>
                                 <td>{time.level}</td>
                                 <td>{time.cargo}</td>
                                 <td>{time.lider_id}</td>
                                 <td>{time.id_sub_estrutura}</td>
-                                <td className="text-center"><ViewStructure time={time} /></td>
+                                <td className="text-center align-middle"><ViewStructure time={time}  /></td>
                             </tr>
                         ))
 
@@ -73,6 +75,8 @@ const OrgComplete = () => {
                 </table>
     
         </div>
+     
+        
         </Fragment>
         );
     }
