@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react";
 
-
 const ViewStructure = ({ time }) => {
     const [id] = useState(time.id);
     const [filhos, setFilhos] = useState([]);
+    
    console.log(time);
-
+   
     //------------------------------------------------------------------------------------------
 
     const getFilhos = async id => {
@@ -20,10 +20,13 @@ const ViewStructure = ({ time }) => {
             console.error(err.message);
         }
     }
+    //-------------------------------------------------------------------------------------------
 
+    
 
 
     //-------------------------------------------------------------------------------------------
+
 
     return (
         <Fragment>
@@ -73,7 +76,8 @@ onClick={() => getFilhos(time.id)}>
                                 <td>{filho.cargo}</td>
                                 <td>{filho.lider_id}</td>
                                 <td>{filho.id_sub_estrutura}</td>
-                                <td><span class="badge bg-secondary inline-block">{filho.marcas}</span></td>
+                                <td><span class="badge bg-secondary inline-block" key={[filho.marcas]}>
+                                    {filho.marcas}</span></td>
                             </tr>
                         ))
 
