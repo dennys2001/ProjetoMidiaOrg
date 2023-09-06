@@ -9,9 +9,7 @@ const InputEmployee = () => {
     const [idEstrutura, setEstrutura] = useState("");
 /* INSERINDO O CAMPO DE MARCAS - 04/09 12:55*/
     const [marcas, setMarcas] = useState("");
-
     const [lideres, setListLider] = useState("");
-
 
     const onSubmitForm = async e => {
         e.preventDefault();
@@ -54,6 +52,7 @@ const InputEmployee = () => {
     
     return (
     <Fragment>
+        
         <h1 className="text-center mt-5">Org Chart Admin</h1>
         <form className="form-inline mt-5" onSubmit={onSubmitForm}>
             <div className="container">            
@@ -64,8 +63,7 @@ const InputEmployee = () => {
                 type="text" 
                 className="form-control" 
                 value={level}
-                onChange={e => setLevel(e.target.value)}
-            >
+                onChange={e => setLevel(e.target.value)}>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -93,12 +91,34 @@ const InputEmployee = () => {
                     <option defaultValue>Selecione o Líder</option>
                         { lideres && lideres.map(lider => ( <option key={lider.id} value = {lider.id}>{lider.nome}</option>
 
-                        ) )}
-                   
+                        ) )} 
             </select>
             </div>
+
+{/*----------------------------------------------------------------------------------*/}
+
+                <div>
+                <label for="cargoDataList" class="form-label text-left"><h5>Cargo:</h5></label>
+                <input class="form-control" 
+                       list="datalistOptions" 
+                       id="cargoDataList" 
+                       placeholder="Type to search..."
+                       value={cargo}
+                       onChange={e => setCargo(e.target.value)}/>
+                <datalist id="datalistOptions">
+                { lideres && lideres.map(lider => ( <option key={lider.id} value = {lider.id}>{lider.nome}</option>
+
+) )}
+          
+                
+                </datalist>
+                </div>
+
+
+
+
             <div className="col">
-            <h5>Cargo:</h5>
+            <label><h5>Cargo:</h5></label>
             <input 
                 type="text" 
                 className="form-control" 
@@ -106,6 +126,10 @@ const InputEmployee = () => {
                 onChange={e => setCargo(e.target.value)}
             />
             </div>
+
+{/*----------------------------------------------------------------------------------*/}
+
+
             <div className="col">
             <h5>Estrutura:</h5>
             <input 

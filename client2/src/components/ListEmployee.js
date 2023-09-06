@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import EditEmployee from "./EditEmployee";
 import FilterEmployee from "./FilterEmployee";
+import InputEmployee from "./InputEmployee";
 
 const ListEmployee = () => {
     const [employees, setEmployee] = useState([]);
@@ -37,7 +38,8 @@ const ListEmployee = () => {
            // console.log(employees);
             return(
                 <Fragment>
-                     <FilterEmployee employees={employees} />   
+                     <FilterEmployee employees={employees} /> 
+                     
                     <table className="table mt-5 text-center">
                         <thead>
                         <tr>
