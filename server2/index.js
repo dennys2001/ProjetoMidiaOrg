@@ -104,7 +104,7 @@ app.get("/callemployees/callestruturas", async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-    console.log("chamou");
+   
 });
 
 
@@ -156,6 +156,21 @@ app.get("/allemployees/nomes/todos", async (req, res) => {
   
 });
 
+
+//BUSCA OS CARGOS DISPONIVEIS
+
+app.get("/allemployees/cargos/todos", async (req, res) => {
+    try {
+        const allCargos = await pool.query(
+            "SELECT DISTINCT(cargo) FROM midia.ORGCHART order by cargo", 
+        );
+
+        res.json(allCargos.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+    console.log("chamou");
+});
 
 
 

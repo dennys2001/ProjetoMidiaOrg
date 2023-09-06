@@ -10,6 +10,7 @@ const InputEmployee = () => {
 /* INSERINDO O CAMPO DE MARCAS - 04/09 12:55*/
     const [marcas, setMarcas] = useState("");
     const [lideres, setListLider] = useState("");
+    const [listCargos, setListCargos] = useState("");
 
     const onSubmitForm = async e => {
         e.preventDefault();
@@ -47,6 +48,31 @@ const InputEmployee = () => {
     }, []);
     
 
+    //==================Inserindo auto-complete no Cargo====================//    
+
+    const getListCargos = async () => {
+        try {
+          const response = await fetch("http://localhost:5000/allemployees/cargos/todos")
+          const jsonData = await response.json()
+
+          setListCargos(jsonData);
+          
+        } catch (err) {
+          console.error(err.message)
+          
+        }      
+        
+        };
+
+        useEffect(() => {
+            getListCargos();
+        }, []);
+
+
+     //==================Inserindo auto-complete no Cargo====================//  
+
+
+
 
 
     
@@ -55,68 +81,70 @@ const InputEmployee = () => {
         
         <h1 className="text-center mt-5">Org Chart Admin</h1>
         <form className="form-inline mt-5" onSubmit={onSubmitForm}>
-            <div className="container">            
-            <div className="row">
-            <div className="col">
-            <h5>Level:</h5>
-            <select 
-                type="text" 
-                className="form-control" 
-                value={level}
-                onChange={e => setLevel(e.target.value)}>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            </div>
-            <div className="col">
-            <h5>Nome:</h5>
-            <input 
-                type="text" 
-                className="form-control" 
-                value={nome}
-                onChange={e => setName(e.target.value)}
-            />
-            </div>
-            <div className="col">
-            <h5>Lider:</h5>
-             <select 
-                type="text" 
-                className="form-control" 
-                value={leaderId}
-                onChange={e => setidLeader(e.target.value)}
-            >
-                    <option defaultValue>Selecione o Líder</option>
-                        { lideres && lideres.map(lider => ( <option key={lider.id} value = {lider.id}>{lider.nome}</option>
+                      
+            
+   
+            <div className="input-group mb-3 input-group-lg">
 
-                        ) )} 
-            </select>
+            <label for="cargoDataList" class="form-label ml-1">Nome:</label>
+                                <select 
+                                        type="text" 
+                                        className="form-control"
+                                        
+                                        value={level}
+                                        onChange={e => setLevel(e.target.value)}>
+                                            <option>Selecione o Nível</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                </select>
+            </div>
+            <div className="input-group mb-3 input-group-lg">    
+            <label for="cargoDataList" class="form-label ml-5">Nome:</label>
+                                    <input 
+                                        type="text" 
+                                        className="form-control ml-1"
+                                        placeholder="Digite o Nome"
+                                        value={nome}
+                                        onChange={e => setName(e.target.value)}
+                                    />
             </div>
 
-{/*----------------------------------------------------------------------------------*/}
+            <div className="input-group mb-3 input-group-lg">
+                        <label for="cargoDataList" class="form-label ml-4">Lider:</label>
+                                <select 
+                                    type="text" 
+                                    className="form-control ml=2"
+                                    
+                                    value={leaderId}
+                                    onChange={e => setidLeader(e.target.value)}
+                                >
+                                        <option defaultValue>Selecione:</option>
+                                            { lideres && lideres.map(lider => ( <option key={lider.id} value = {lider.id}>{lider.nome}</option>
 
-                <div>
-                <label for="cargoDataList" class="form-label text-left"><h5>Cargo:</h5></label>
-                <input class="form-control" 
-                       list="datalistOptions" 
-                       id="cargoDataList" 
-                       placeholder="Type to search..."
-                       value={cargo}
-                       onChange={e => setCargo(e.target.value)}/>
-                <datalist id="datalistOptions">
-                { lideres && lideres.map(lider => ( <option key={lider.id} value = {lider.id}>{lider.nome}</option>
+                                            ) )} 
+                                </select>
+            </div>
+            <div className="input-group mb-3 input-group-lg">                       
+                                            <label for="cargoDataList" class="form-label ml-1">Cargo:</label>
+                                            <input className="form-control ml-1" 
+                                                list="datalistOptions" 
+                                                id="cargoDataList" 
+                                                placeholder="Digite para buscar..."
+                                                value={cargo}
+                                                onChange={e => setCargo(e.target.value)}/>
+                                            <datalist id="datalistOptions">
+                                            { listCargos && listCargos.map(lCargo => ( 
+                                                <option key={lCargo.cargo} value = {lCargo.cargo}>{lCargo.cargo}</option>
 
-) )}
-          
+                                                ) )}
+                                            </datalist>
                 
-                </datalist>
-                </div>
+{/*-----------------Inserido Campo Cargo Dinamico no Form---------------------*/}
 
-
-
-
+{/*--Retirado Campo Cargo Como Input Livre-------------------------------------------
             <div className="col">
             <label><h5>Cargo:</h5></label>
             <input 
@@ -126,41 +154,28 @@ const InputEmployee = () => {
                 onChange={e => setCargo(e.target.value)}
             />
             </div>
+----Retirado Campo Cargo Como Input Livre-----------------------------------------*/}
 
-{/*----------------------------------------------------------------------------------*/}
-
-
-            <div className="col">
-            <h5>Estrutura:</h5>
+            <label className="usr ml-3" for="usr ml-3">Estrutura:</label>
             <input 
                 type="text" 
-                className="form-control" 
+                className="form-control ml-1"
+                placeholder="Insira a Estrutura"
                 value={idEstrutura}
                 onChange={e => setEstrutura(e.target.value)}
             />
-            </div>
-            <div className="col">
-            <h5>Marcas:</h5>
-            <input 
+             <label className="usr ml-3" for="usr ml-3">Marcas:</label>
+             <input 
                 type="text" 
-                className="form-control" 
+                className="form-control ml-1"
+                placeholder="Insira a(s) marca(s)"
                 value={marcas}
                 onChange={e => setMarcas(e.target.value)}
             />
-            <button className="btn btn-success ml-3">Add</button>
+            <button className="btn btn-success ml-4">Adicionar</button>
+        
             </div>
-            
-            
-            <div className="col">
-
-            </div>
-            </div>
-            </div>
-                <div className="container">            
-                <div className="row m-3"></div>
-                
-                
-                </div>
+           
             </form>
             
             </Fragment>
