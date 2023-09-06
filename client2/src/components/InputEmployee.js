@@ -169,6 +169,7 @@ const InputEmployee = () => {
                 type="text" 
                 className="form-control ml-1"
                 placeholder="Insira a(s) marca(s)"
+                data-bs-toggle="tooltip" title="Separe as marcas por ' ; ' "
                 value={marcas}
                 onChange={e => setMarcas(e.target.value)}
             />

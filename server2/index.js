@@ -169,7 +169,7 @@ app.get("/allemployees/cargos/todos", async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-    console.log("chamou");
+  
 });
 
 
