@@ -1,6 +1,6 @@
 import React, { Fragment, useState }  from "react";
 import ViewStructure from "./ViewStructure";
-
+import TeamCards from "./TeamCards";
 
 
 
@@ -42,7 +42,7 @@ const OrgComplete = () => {
         <Fragment>
         <h1 className="text-center mt-5">Lista da estrutura</h1>
         <div className="container mt-3">
-                           <h2></h2>
+                         
                     <p className="text-center mt-0">------------------------------------------------------------------</p> 
 
                 <table className="table table-hover">
@@ -76,7 +76,7 @@ const OrgComplete = () => {
     
         </div>
      
-        
+          <TeamCards />
         </Fragment>
         );
     }
