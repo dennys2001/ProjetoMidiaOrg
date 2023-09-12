@@ -12,7 +12,7 @@ const TeamCards = () => {
             <div class="row">
                 <div class="col-sm-3 p-3 bg-white text-black">
                     <div class="card" >
-                        <img class="card-img-top" src={image1} alt="Card image" />
+                        <img class="card-img-top rounded-circle" src={image1} alt="Card image" />
 
                         
 
@@ -26,7 +26,7 @@ const TeamCards = () => {
 
                 <div class="col-sm-3 p-3 bg-warning text-white">
                     <div class="card" >
-                        <img class="card-img-top" src={image1} alt="Card image" />
+                        <img class="card-img-top rounded-circle" src={image1} alt="Card image" />
                         <div class="card-body">
                         <h4 class="card-title">Beka</h4>
                         <p class="card-text">Gerente da Porra Toda</p>
