@@ -7,7 +7,7 @@ import TeamCards from "./TeamCards";
 
 const OrgComplete = () => {
    
-    const [times, setTime] = useState([]);
+    const [diretoria, setTime] = useState([]);
         const getTime = async () => {
             try {
 
@@ -24,7 +24,7 @@ const OrgComplete = () => {
         };
        
         
-        useState((times) => {
+        useState((diretoria) => {
             getTime();
         }, []);
 
@@ -35,7 +35,7 @@ const OrgComplete = () => {
             );
         };*/
 
-
+        
 
         return (
 
@@ -58,7 +58,7 @@ const OrgComplete = () => {
                             </tr>
                     </thead>    
                     <tbody>
-                        {times.map(time => (
+                        {diretoria.map(time => (
                             <tr className="text-center align-middle" key={time.id} > 
                                 <td >{time.id}</td>
                                 <td>{time.nome}</td>
@@ -76,7 +76,7 @@ const OrgComplete = () => {
     
         </div>
      
-          <TeamCards />
+          <TeamCards diretoria={diretoria} />
         </Fragment>
         );
     }
