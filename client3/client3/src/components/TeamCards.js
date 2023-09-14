@@ -5,7 +5,7 @@ import image1 from "./img/logo192.png"
 
 
 const TeamCards = ({ diretoria }) => {
-    const [filhos, setFilhos] = useState([]);
+    const [filhos, setFilhos] = useState([""]);
  
 
     const getFilhos = async id => {
@@ -16,10 +16,16 @@ const TeamCards = ({ diretoria }) => {
              const jsonData = await response.json()
  
              setFilhos(jsonData);
+             console.log(filhos);
          } catch (err) {
              console.error(err.message);
          }
-     }
+        
+     };
+
+     useState((filhos) => {
+        getFilhos();
+    }, []);
 
     return (
     <Fragment>
@@ -40,16 +46,12 @@ const TeamCards = ({ diretoria }) => {
                         <h4 class="card-title">{diretor.nome}</h4>
                         <p class="card-text">{diretor.cargo}</p>
                         </div>
+                        
                     </div>
                    
                 </div>
 
 ))}
-
-
-             
-                
-          
             </div>
         </div> 
 
