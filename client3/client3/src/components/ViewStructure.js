@@ -7,17 +7,17 @@ const ViewStructure = ({ time }) => {
     const [id] = useState(time.id);
     const [filhos, setFilhos] = useState([]);
     const [itemList] = useState([filhos.marcas]);
-   
+    console.log(time);
    
     //------------------------------------------------------------------------------------------
 
     const getFilhos = async id => {
-       // console.log("clicou nos filhos de", id);
+        //console.log("clicou nos filhos de", id);
         try {
 
             const response = await fetch(`http://localhost:5000/allemployees/subestrutura/${id}`)
             const jsonData = await response.json()
-
+             // console.log(id);
             setFilhos(jsonData);
         } catch (err) {
             console.error(err.message);
@@ -81,7 +81,7 @@ onClick={() => getFilhos(time.id)}>
                                 <td className="text-center">{filho.id_sub_estrutura}</td>
                                 <td key={filho.id} >
                                   <BadgeList itemList={filho.marcas}/>
-                                  {console.log(filho.marcas)}
+                                
                              
                                 </td>
 
@@ -91,11 +91,6 @@ onClick={() => getFilhos(time.id)}>
                         }
                     </tbody>
                 </table>
-
-
-
-
-
 
       </div>
 

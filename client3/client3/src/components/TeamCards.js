@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import image1 from "./img/logo192.png"
-
+import ViewStructure from "./ViewStructure"
 
 
 
@@ -9,14 +9,14 @@ const TeamCards = ({ diretoria }) => {
  
 
     const getFilhos = async id => {
-         console.log("clicou nos filhos de", id);
+         //console.log("clicou nos filhos de", id);
          try {
  
              const response = await fetch(`http://localhost:5000/allemployees/subestrutura/${id}`)
              const jsonData = await response.json()
  
              setFilhos(jsonData);
-             console.log(filhos);
+           
          } catch (err) {
              console.error(err.message);
          }
@@ -30,23 +30,24 @@ const TeamCards = ({ diretoria }) => {
     return (
     <Fragment>
 
-        <div class="container p-5 my-5 bg-dark text-white">
-            <h1>Conheça Nosso Time</h1>
+        <div className="container p-5 my-5 bg-dark text-white">
+            <h1>Know Our Team</h1>
             <p>Agora só faltam as fotos</p>
             
-            <div class="row">
+            <div className="row">
              {diretoria.map(diretor =>  (
-                <div class="col-sm-3 p-3 bg-white text-black" key={diretor.id}>
+                <div className="col-sm-3 p-3 bg-white text-black" key={diretor.id}>
                    
-                    <div class="card align-center"
-                    onClick={() => getFilhos(diretor.id)} >
-                        <img class="card-img-top rounded-circle" src={ image1 } alt="Card image" />
-
-                        <div class="card-body">
-                        <h4 class="card-title">{diretor.nome}</h4>
-                        <p class="card-text">{diretor.cargo}</p>
+                    <div className="card align-center bg-light text-dark"
+                         >
+                        <img className="card-img-top rounded-circle border" src={ image1 } alt="Card image"  />
+                        <div className="card-body">
+                            <h4 className="card-title">{diretor.nome}</h4>
+                            <p className="card-text">{diretor.cargo}</p>
+                            <ViewStructure time={diretor}  />
+                            
                         </div>
-                        
+                     
                     </div>
                    
                 </div>
