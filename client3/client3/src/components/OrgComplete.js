@@ -43,7 +43,7 @@ const toggleSecondary = () => {
       // Call both functions
       setIdDiretor(diretor)
       //getFilhos(idDiretor);
-        console.log(diretor);
+        //console.log(diretor);
       toggleSecondary();
      
        // console.log(handleButtonClick)

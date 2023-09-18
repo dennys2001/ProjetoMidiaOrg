@@ -13,7 +13,7 @@ const MatesCards = ({ diretor }) => {
             try {
                     const response = await fetch(`http://localhost:5000/allemployees/subestrutura/${diretor.id}`)
                     const jsonData = await response.json()
-                    console.log(`http://localhost:5000/allemployees/subestrutura/${diretor.id}`)
+                    
                     setFilhos(jsonData);
                     
                     
@@ -21,13 +21,13 @@ const MatesCards = ({ diretor }) => {
                 } catch (err) {
                     console.error(err.message)
             }
-
+            
         } 
         useState((filhos) => {
             getFilhos();
         }, []);
-  
-
+        console.log(filhos);
+        
 
 
     useEffect(() => {
