@@ -50,19 +50,20 @@ const OrgComplete = () => {
                                 <div className="card-body">
                                     <h4 className="card-title">{diretor.nome}</h4>
                                     <p className="card-text">{diretor.cargo}</p>
-                                    <ViewStructure time={diretor.id}  />
+                                    <ViewStructure time={diretor}  /> 
                                     
                                 </div>
                              
                             
                             
                             </div>
-                                
+                                  
                         </div>
                      ))}
                    </div>
+                   
                 </div>
-
+                            
             </Fragment>
             
         );
