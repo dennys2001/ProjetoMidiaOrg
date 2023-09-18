@@ -3,13 +3,30 @@ import image1 from "./img/logo192.png"
 
 
 
-const MatesCards = ({ filhos }) => {
-    const myComponentRef = useRef(null);
+const MatesCards = ({ diretor }) => {
 
-  console.log(filhos)
+    const [filhos, setFilhos] = useState([]);
+    const myComponentRef = useRef(null);  
+                                       // console.log(filhos)
 
-    
+          const getFilhos = async () => {
+            try {
+                    const response = await fetch(`http://localhost:5000/allemployees/subestrutura/${diretor.id}`)
+                    const jsonData = await response.json()
+                    console.log(`http://localhost:5000/allemployees/subestrutura/${diretor.id}`)
+                    setFilhos(jsonData);
+                    
+                    
+                    
+                } catch (err) {
+                    console.error(err.message)
+            }
 
+        } 
+        useState((filhos) => {
+            getFilhos();
+        }, []);
+  
 
 
 
