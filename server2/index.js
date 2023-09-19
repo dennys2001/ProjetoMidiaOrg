@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const multer = require('multer');
+
+
+const storage = multer.memoryStorage(); // Store the file in memory
+const upload = multer({ storage: storage });
 
 //middleware
 app.use(cors());
@@ -13,15 +18,26 @@ app.use(express.json());
 app.post("/create", async (req, res) => {
     try {
         const { level, nome, leaderId, cargo, idEstrutura, marcas } = req.body;
-        const newTodo = await pool.query(
+        const newPerson = await pool.query(
             "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura, marcas) VALUES($1,$2,$3,$4,$5,$6) RETURNING *", 
             [level, nome, leaderId, cargo, idEstrutura, marcas]
         );
 
-        res.json(newTodo.rows[0]);
+        res.json(newPerson.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
+
+    app.post('/upload', upload.single('file'), (req, res) => {
+        // Handle the uploaded file here
+        const fileData = req.file; // This contains information about the uploaded file (e.g., file.buffer for the file data)
+      
+        // Save the file data to the database (e.g., PostgreSQL) using a library like Sequelize or pg-promise.
+      
+        // Respond with a success message or an error message
+        res.json({ message: 'File uploaded successfully' });
+      });
+
 });
 
 //BUSCAR TODOS OS FUNCIONÁRIOS
