@@ -15,31 +15,43 @@ app.use(express.json());
 //ROTAS//
 
 //CRIAR FUNCIONÁRIO
-app.post("/create", async (req, res) => {
-    try {
-        const { level, nome, leaderId, cargo, idEstrutura, marcas } = req.body;
+app.post("/create", upload.single('image'), async (req, res) => {
+    try{
+        const imageFile  = req.file; // Contains information about the uploaded image
+        const formData  = req.body; // Contains other form data
+        //console.log(formData)
         const newPerson = await pool.query(
-            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura, marcas) VALUES($1,$2,$3,$4,$5,$6) RETURNING *", 
-            [level, nome, leaderId, cargo, idEstrutura, marcas]
+            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura, marcas, image) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *", 
+            [formData.level, 
+             formData.nome, 
+             formData.lider, 
+             formData.cargo, 
+             formData.estrutura, 
+             formData.marcas, 
+             imageFile.buffer]
         );
-
-        res.json(newPerson.rows[0]);
+        
+        res.json({ message: 'Form submitted successfully' });
+       
     } catch (err) {
         console.error(err.message);
-    }
+    }            
+           
+ });         
+                
 
-    app.post('/upload', upload.single('file'), (req, res) => {
-        // Handle the uploaded file here
-        const fileData = req.file; // This contains information about the uploaded file (e.g., file.buffer for the file data)
-      
-        // Save the file data to the database (e.g., PostgreSQL) using a library like Sequelize or pg-promise.
-      
-        // Respond with a success message or an error message
-        res.json({ message: 'File uploaded successfully' });
-      });
 
-});
 
+
+
+
+
+
+
+
+
+
+    
 //BUSCAR TODOS OS FUNCIONÁRIOS
 
 app.get("/allemployees", async (req, res) => {

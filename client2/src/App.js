@@ -5,12 +5,14 @@ import './App.css';
 import InputEmployee from "./components/InputEmployee";
 import ListEmployee from "./components/ListEmployee";
 import FilterEmployee from "./components/FilterEmployee";
+import InputNew from "./components/InputNew";
 
 function App() {
   return <Fragment>
           <div className="container">
-          <InputEmployee />
+          <InputNew />
           <ListEmployee />
+          
           </div>
         </Fragment>;
 }
