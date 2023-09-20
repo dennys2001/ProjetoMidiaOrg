@@ -33,7 +33,7 @@ const OrgComplete = () => {
 
 //-------------------------------------------------função busca os filhos------       
 
-
+console.log(diretoria);
         
 //-------------------------------------------------downward------
 const toggleSecondary = () => {
@@ -66,21 +66,24 @@ const toggleSecondary = () => {
                            
                             <div className="card align-center bg-light text-dark"
                                  >
-                                <img className="card-img-top rounded-circle border" src={ image1 } alt="Card image"  />
+                                    {diretor.image !== null ? (
+                                <img className="card-img-top rounded-circle border" 
+                                     src={`data:image/jpeg;base64,${diretor.image}`} 
+                                     alt={`Image Unavailable`}  
+                                     />
+                                     ) : (
+                                     <p>No image available</p>
+                                     )}
                                 <div className="card-body">
                                     <h4 className="card-title">{diretor.nome}</h4>
                                     <p className="card-text">{diretor.cargo}</p>
                                     <button type="button" className="btn btn-primary text-center align-middle"
                                     onClick={() => handleButtonClick(diretor)}>
                                         
-                                    {diretor.id}
+                                    {diretor.nome}
                                     </button>     
                                 </div>
-                                
-
-                            
                             </div>
-                                  
                         </div>
                     ))}
                    </div>

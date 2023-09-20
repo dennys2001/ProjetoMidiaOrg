@@ -1,5 +1,7 @@
 import React, {Fragment, useState, useEffect} from "react";
 import ListEmployee from "./ListEmployee";
+import InputNew from "./InputNew";
+
 
 const InputEmployee = () => {
     const [level, setLevel] = useState("");

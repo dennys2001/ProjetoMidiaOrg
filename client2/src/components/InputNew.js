@@ -193,7 +193,7 @@ useEffect(() => {
         onChange={handleInputChange}
     />
     
-    <input className="mt-3 ml-5" type="file" accept="image/*" onChange={handleImageChange} />
+    <input className="mt-3 ml-5b" type="file" accept="image/*" onChange={handleImageChange} />
     <p></p><button className="btn btn-primary mt-3 ml-5" type="submit">Submit</button>
     </form>
     </Fragment>

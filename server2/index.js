@@ -143,8 +143,12 @@ app.get("/allemployees/diretores/todos", async (req, res) => {
         const allDirectors= await pool.query(
             "SELECT * FROM midia.ORGCHART where level in (1, 2) order by level", 
         );
-    
-        res.json(allDirectors.rows);
+        const directorsWithImages = allDirectors.rows.map((director) => ({
+            ...director,
+            image: director.image !== null ? director.image.toString("base64") : "", // Convert image data to Base64
+          }));
+     //console.log(image)
+          res.json(directorsWithImages);
     } catch (err) {
         console.error(err.message);
     }
