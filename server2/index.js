@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const multer = require('multer');
+
+
+const storage = multer.memoryStorage(); // Store the file in memory
+const upload = multer({ storage: storage });
 
 //middleware
 app.use(cors());
@@ -10,20 +15,43 @@ app.use(express.json());
 //ROTAS//
 
 //CRIAR FUNCIONÁRIO
-app.post("/create", async (req, res) => {
-    try {
-        const { level, nome, leaderId, cargo, idEstrutura, marcas } = req.body;
-        const newTodo = await pool.query(
-            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura, marcas) VALUES($1,$2,$3,$4,$5,$6) RETURNING *", 
-            [level, nome, leaderId, cargo, idEstrutura, marcas]
+app.post("/create", upload.single('image'), async (req, res) => {
+    try{
+        const imageFile  = req.file; // Contains information about the uploaded image
+        const formData  = req.body; // Contains other form data
+        //console.log(formData)
+        const newPerson = await pool.query(
+            "INSERT INTO midia.ORGCHART (level, nome, lider_id, cargo, id_sub_estrutura, marcas, image) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *", 
+            [formData.level, 
+             formData.nome, 
+             formData.lider, 
+             formData.cargo, 
+             formData.estrutura, 
+             formData.marcas, 
+             imageFile.buffer]
         );
-
-        res.json(newTodo.rows[0]);
+        
+        res.json({ message: 'Form submitted successfully' });
+       
     } catch (err) {
         console.error(err.message);
-    }
-});
+    }            
+           
+ });         
+                
 
+
+
+
+
+
+
+
+
+
+
+
+    
 //BUSCAR TODOS OS FUNCIONÁRIOS
 
 app.get("/allemployees", async (req, res) => {
@@ -115,8 +143,12 @@ app.get("/allemployees/diretores/todos", async (req, res) => {
         const allDirectors= await pool.query(
             "SELECT * FROM midia.ORGCHART where level in (1, 2) order by level", 
         );
-    
-        res.json(allDirectors.rows);
+        const directorsWithImages = allDirectors.rows.map((director) => ({
+            ...director,
+            image: director.image !== null ? director.image.toString("base64") : "", // Convert image data to Base64
+          }));
+     //console.log(image)
+          res.json(directorsWithImages);
     } catch (err) {
         console.error(err.message);
     }

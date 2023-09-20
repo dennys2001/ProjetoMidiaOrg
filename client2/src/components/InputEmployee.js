@@ -1,5 +1,7 @@
 import React, {Fragment, useState, useEffect} from "react";
 import ListEmployee from "./ListEmployee";
+import InputNew from "./InputNew";
+
 
 const InputEmployee = () => {
     const [level, setLevel] = useState("");
@@ -11,11 +13,12 @@ const InputEmployee = () => {
     const [marcas, setMarcas] = useState("");
     const [lideres, setListLider] = useState("");
     const [listCargos, setListCargos] = useState("");
+    const [foto, setFoto] = useState("");
 
     const onSubmitForm = async e => {
         e.preventDefault();
         try {
-            const body = { level, nome, leaderId, cargo, idEstrutura, marcas }
+            const body = { level, nome, leaderId, cargo, idEstrutura, marcas, foto }
             const response = await fetch("http://localhost:5000/create", {
                 method:"POST",
                 headers: { "Content-Type": "application/json" },
@@ -28,6 +31,18 @@ const InputEmployee = () => {
             console.log(err.message);
         }
     };
+
+
+    //-------------------------UPLOAD-----------------------------------//
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+      
+        // Send formData to the server using an HTTP request (e.g., Axios or fetch).
+      };
+    //-------------------------UPLOAD-----------------------------------//
+
 
     const getListLider = async () => {
           try {
@@ -173,10 +188,21 @@ const InputEmployee = () => {
                 value={marcas}
                 onChange={e => setMarcas(e.target.value)}
             />
-            <button className="btn btn-success ml-4">Adicionar</button>
+            
         
             </div>
-           
+            <div class="text-center mb-3">
+                <label for="formFileLg" class="form-label">Insira a foto</label>
+                <input 
+                    class="form-control form-control-lg " 
+                    type="file"
+                    accept="image/*"
+                    id="formFileLg"
+                    value={foto}
+                    onChange={handleFileUpload}
+                />
+            </div>
+            <button className="btn btn-success ml-4">Adicionar</button>
             </form>
             
             </Fragment>

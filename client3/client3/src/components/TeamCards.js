@@ -40,7 +40,7 @@ const TeamCards = ({ diretoria }) => {
                    
                     <div className="card align-center bg-light text-dark"
                          >
-                        <img className="card-img-top rounded-circle border" src={ image1 } alt="Card image"  />
+                        <img className="card-img-top rounded-circle border" src={ diretor.image } alt="Card image"  />
                         <div className="card-body">
                             <h4 className="card-title">{diretor.nome}</h4>
                             <p className="card-text">{diretor.cargo}</p>
