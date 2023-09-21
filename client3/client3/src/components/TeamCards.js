@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import image1 from "./img/logo192.png"
 import ViewStructure from "./ViewStructure"
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const TeamCards = ({ diretoria }) => {
@@ -40,12 +40,16 @@ const TeamCards = ({ diretoria }) => {
                    
                     <div className="card align-center bg-light text-dark"
                          >
-                        <img className="card-img-top rounded-circle border" src={ diretor.image } alt="Card image"  />
+                        <div className="container mt-5">
+                             <div className="d-flex justify-content-center">    
+                                <img className="rounded-circle border" src={ diretor.image } alt="Card image" style={{ width: '150px', height: '150px' }}  />
+                             </div>
+                        </div>    
+                            
                         <div className="card-body">
                             <h4 className="card-title">{diretor.nome}</h4>
                             <p className="card-text">{diretor.cargo}</p>
                             <ViewStructure time={diretor}  />
-                            
                         </div>
                      
                     </div>
