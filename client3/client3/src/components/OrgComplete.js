@@ -70,7 +70,7 @@ const toggleSecondary = () => {
                         
                         <div className="col-sm-3 p-3 bg-white text-black" key={diretor.id}  >
                            <div className="d-flex justify-content-center">
-                              <div className="card align-center bg-light text-dark d-flex justify-content-center align-items-center">
+                              <div className="card  bg-light text-dark d-flex justify-content-center align-items-center">
                                 
                                     {diretor.image !== null ? (
                                     <img className="card-img-top rounded-circle border" style={imageStyle}
