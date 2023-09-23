@@ -1,6 +1,6 @@
 import React, { Fragment, useState }  from "react";
 //import ViewStructure from "./ViewStructure";
-import image1 from "./img/logo192.png"
+import NoImage from "./img/no-image-available-md.png"
 import MatesCards from "./MatesCards"
 
 
@@ -10,7 +10,13 @@ const OrgComplete = () => {
     const [idDiretor, setIdDiretor] = useState(); 
     const [diretoria, setDiretoria] = useState([]);
     const [isSecondaryOpen, setSecondaryOpen] = useState(false);
-  
+   // const alternativeText = {NoImage};
+    const imageStyle = {
+        width: '150px', // Adjust the width as needed
+        height: '150px', // Adjust the height as needed
+        borderRadius: '50%', // To make it perfectly circular
+        // You can add other CSS styles here if necessary
+      };
 
         const getDiretoria = async () => {
             try {
@@ -63,28 +69,29 @@ const toggleSecondary = () => {
                      {diretoria.map((diretor) =>  ( 
                         
                         <div className="col-sm-3 p-3 bg-white text-black" key={diretor.id}  >
-                           
-                            <div className="card align-center bg-light text-dark"
-                                 >
+                           <div className="d-flex justify-content-center">
+                              <div className="card align-center bg-light text-dark d-flex justify-content-center align-items-center">
+                                
                                     {diretor.image !== null ? (
-                                <img className="card-img-top rounded-circle border" 
-                                     src={`data:image/jpeg;base64,${diretor.image}`} 
-                                     alt={`Image Unavailable`}  
-                                     />
-                                     ) : (
-                                     <p>No image available</p>
-                                     )}
-                                <div className="card-body">
-                                    <h4 className="card-title">{diretor.nome}</h4>
-                                    <p className="card-text">{diretor.cargo}</p>
-                                    <button type="button" className="btn btn-primary text-center align-middle"
-                                    onClick={() => handleButtonClick(diretor)}>
-                                        
-                                    {diretor.nome}
-                                    </button>     
-                                </div>
+                                    <img className="card-img-top rounded-circle border" style={imageStyle}
+                                        src={`data:image/jpeg;base64,${diretor.image}`} 
+                                       alt={NoImage.buffer}  
+                                        />
+                                            ) : (
+                                            <p>available</p>
+                                            )}
+                                    <div className="card-body">
+                                        <h4 className="card-title">{diretor.nome}</h4>
+                                        <p className="card-text">{diretor.cargo}</p>
+                                        <button type="button" className="btn btn-primary text-center align-middle"
+                                        onClick={() => handleButtonClick(diretor)}>
+                                            
+                                        {diretor.nome}
+                                        </button>     
+                                    </div>
                             </div>
                         </div>
+                    </div>
                     ))}
                    </div>
                    
